@@ -4,4 +4,7 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 1.21;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
