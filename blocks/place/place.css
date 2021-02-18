@@ -1,0 +1,8 @@
+.place {
+  position: relative;
+  margin: 0;
+  height: 361px;
+  border-radius: 10px;
+  background-color: white;
+  overflow: hidden;
+}
