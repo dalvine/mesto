@@ -1,0 +1,9 @@
+.author {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 120px minmax(max-content, 294px) max-content;
+  gap: 16px 30px;
+  grid-template-areas:
+  'avatar author-name button-edit'
+  'avatar author-about ..';
+}

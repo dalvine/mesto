@@ -1,0 +1,9 @@
+.author__name {
+  margin: 0;
+  grid-area: author-name;
+  align-self: flex-end;
+  justify-self: flex-start;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1.14;
+}

@@ -3,3 +3,11 @@
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/author/author.css);
+@import url(../blocks/author/__about/author__about.css);
+@import url(../blocks/author/__name/author__name.css);
+@import url(../blocks/author/__avatar/author__avatar.css);
+@import url(../blocks/button/button.css);
+@import url(../blocks/button/_add/button_add.css);
+@import url(../blocks/button/_edit/button_edit.css);

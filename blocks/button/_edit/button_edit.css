@@ -1,0 +1,10 @@
+.button_edit {
+  display: inline;
+  width: 24px;
+  height: 24px;
+  grid-area: button-edit;
+  align-self: flex-end;
+  background-image: url(../../../images/pencil.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,7 @@
+.author__about {
+  margin: 0;
+  grid-area: author-about;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.21;
+}
