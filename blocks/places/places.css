@@ -1,10 +1,4 @@
 .places {
-  margin: 0 auto;
+  margin: 0;
   padding-top: 51px;
-  padding-left: 0;
-  max-width: 880px;
-  display: grid;
-  list-style: none;
-  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
-  gap: 20px 17px;
 }

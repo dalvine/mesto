@@ -12,7 +12,10 @@
 @import url(../blocks/button/_add/button_add.css);
 @import url(../blocks/button/_edit/button_edit.css);
 @import url(../blocks/places/places.css);
+@import url(../blocks/places/__list/places__list.css);
 @import url(../blocks/place/place.css);
 @import url(../blocks/place/__photo/place__photo.css);
 @import url(../blocks/place/__title/place__title.css);
 @import url(../blocks/place/__like/place__like.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copy/footer__copy.css);
