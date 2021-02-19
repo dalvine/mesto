@@ -6,3 +6,9 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+@media screen and (max-width: 430px) {
+  .header__logo {
+    left: 27px;
+  }
+}
