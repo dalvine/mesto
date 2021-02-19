@@ -5,7 +5,14 @@
   margin: 0;
   max-width: 440px;
   width: 90%;
-  height: 330px;
+  min-height: 330px;
   background-color: white;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 440px) {
+  .form {
+    max-width: 90%;
+    min-height: 296px;
+  }
 }

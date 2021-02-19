@@ -14,3 +14,10 @@
 .form__close-btn:hover {
   transform: scale(1.2);
 }
+
+@media screen and (max-width: 626px) {
+  .form__close-btn {
+    right: 0;
+    object-fit: cover;
+  }
+}
