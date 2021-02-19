@@ -5,3 +5,9 @@
   border-radius: 60px;
   object-fit: hover;
 }
+
+@media screen and (max-width: 448px) {
+  .author__avatar {
+    margin-bottom: 26px;
+  }
+}

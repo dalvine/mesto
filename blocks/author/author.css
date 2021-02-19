@@ -7,3 +7,15 @@
   'avatar author-name button-edit'
   'avatar author-about ..';
 }
+
+@media screen and (max-width: 448px) {
+  .author {
+    grid-template-columns: 18px  max-content;
+    grid-template-areas:
+  'avatar avatar avatar'
+  '.. author-name button-edit'
+  'author-about author-about author-about';
+  gap: 0;
+  justify-items: center;
+  }
+}

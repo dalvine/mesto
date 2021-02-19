@@ -5,3 +5,17 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+@media screen and (max-width: 768px) {
+  .button_add {
+    margin-top: 25px;
+    flex-direction: column;
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 448px) {
+  .button_add {
+    width: 100%;
+  }
+}

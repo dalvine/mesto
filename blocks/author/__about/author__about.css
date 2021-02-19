@@ -8,3 +8,15 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+@media screen and (max-width: 768px) {
+  .author__about {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 448px) {
+  .author__about {
+    font-size: 14px;
+  }
+}

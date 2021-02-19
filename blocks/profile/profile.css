@@ -8,3 +8,21 @@
   align-items: center;
   color: white;
 }
+
+@media screen and (max-width: 920px) {
+  .profile {
+    width: calc(100% - 48px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 448px) {
+  .profile {
+    min-height: 286px;
+  }
+}

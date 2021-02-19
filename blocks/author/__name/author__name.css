@@ -9,3 +9,16 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+@media screen and (max-width: 768px) {
+  .author__name {
+    font-size: 34px;
+  }
+}
+
+@media screen and (max-width: 448px) {
+  .author__name {
+    margin-bottom: 14px;
+    font-size: 27px;
+  }
+}

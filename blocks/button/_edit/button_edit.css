@@ -8,3 +8,12 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+@media screen and (max-width: 448px) {
+  .button_edit {
+    margin-left: 10px;
+    width: 18px;
+    height: 18px;
+    align-self: center;
+  }
+}
