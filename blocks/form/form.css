@@ -1,0 +1,11 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0;
+  max-width: 440px;
+  width: 90%;
+  height: 330px;
+  background-color: white;
+  border-radius: 10px;
+}

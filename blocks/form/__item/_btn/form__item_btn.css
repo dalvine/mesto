@@ -1,0 +1,10 @@
+.form__item_btn {
+  height: 50px;
+  margin-top: 48px;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  line-height: 1.21;
+  cursor: pointer;
+  border-radius: 3px;
+}
