@@ -5,3 +5,9 @@
   font-size: 18px;
   line-height: 1.21;
 }
+
+@media screen and (max-width: 448px) {
+  .footer__copy {
+    font-size: 14px;
+  }
+}
