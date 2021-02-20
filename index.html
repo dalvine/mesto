@@ -8,27 +8,29 @@
     <title>Mesto</title>
 </head>
 <body class="page">
-  <div class="popup">
-    <form class="form">
-      <h2 class="form__header">Редактировать профиль</h2>
-      <input class="form__item form__item_text" type="text" id="author-name" value="Жак-Ив Кусто">
-      <input class="form__item form__item_text" type="text" id="author-about" value="Исследователь океана">
-      <input class="form__item form__item_btn" type="button" value="Сохранить">
-      <img src="./images/btn-close.svg" alt="Закрыть окно" class="form__close-btn">
-    </form>
-  </div>
   <header class="header">
     <a href="#" class="header__logo" target="_self"></a>
   </header>
   <main class="main">
+    <section class="popup">
+      <div class="popup__container">
+        <form class="form">
+          <h2 class="form__header">Редактировать профиль</h2>
+          <input class="form__input form__input_type_text" type="text" id="author-name">
+          <input class="form__input form__input_type_text" type="text" id="author-about">
+          <button class="form__button form__button_type_submit" type="submit">Сохранить</button>
+          <button type="button" class="form__button-close"></button>
+        </form>
+      </div>
+    </section>
     <section class="profile">
       <div class="author">
         <img src="./images/author-avatar.jpg" alt="Аватарка автора" class="author__avatar">
         <h1 class="author__name">Жак-Ив Кусто</h1>
         <p class="author__about">Исследователь океана</p>
-        <div class="button button_edit"></div>
+        <button type="button" class="author__button-edit"></button>
       </div>
-      <div class="button button_add"></div>
+      <button type="button" class="profile__button-add"></button>
     </section>
     <section class="places">
     <ul class="places__list">
@@ -68,5 +70,6 @@
       <p class="footer__copy">&copy; 2020 Mesto Russia</p>
     </footer>
   </main>
+  <script src="./scripts/script.js"></script>
 </body>
 </html>

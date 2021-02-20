@@ -1,5 +1,4 @@
-.button_edit {
-  display: inline;
+.author__button-edit {
   width: 24px;
   height: 24px;
   grid-area: button-edit;
@@ -7,10 +6,19 @@
   background-image: url(../../../images/pencil.svg);
   background-position: center;
   background-repeat: no-repeat;
+  background-color: transparent;
+  border: 1px solid white;
+  outline: none;
+  cursor: pointer;
+}
+
+.author__button-edit:hover {
+  opacity: 0.6;
+  transition: opacity 1s linear;
 }
 
 @media screen and (max-width: 448px) {
-  .button_edit {
+  .author__button-edit {
     margin-left: 10px;
     width: 18px;
     height: 18px;

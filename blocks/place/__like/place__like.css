@@ -12,6 +12,7 @@
 }
 
 .place__like:hover {
-  background-image: url(../../../images/like-active.svg);
+  opacity: 0.8;
+  transition: opacity 1s linear;
 }
 
