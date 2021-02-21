@@ -2,6 +2,7 @@ let page = document.querySelector('.page');
 let editProfileButton = page.querySelector('.author__button-edit');
 let popup = page.querySelector('.popup');
 let formEditAuthor = page.querySelector('.form')
+
 let closePopupButton = popup.querySelector('.form__button-close');
 let nameAuthor = page.querySelector('.author__name');
 let aboutAuthor = page.querySelector('.author__about');
