@@ -9,7 +9,6 @@
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__button-close/form__button-close.css);
 @import url(../blocks/form/__button/form__button.css);
-@import url(../blocks/form/__button/_type/form__button_type_submit.css);
 @import url(../blocks/form/__header/form__header.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__input/_content/form__input_content_fullname.css);

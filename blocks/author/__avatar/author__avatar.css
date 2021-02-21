@@ -3,7 +3,7 @@
   height: 120px;
   grid-area: avatar;
   border-radius: 60px;
-  object-fit: hover;
+  object-fit: cover;
   justify-self: center;
 }
 

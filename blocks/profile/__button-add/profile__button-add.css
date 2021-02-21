@@ -5,7 +5,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
-  border: 1px solid white;
+  border: 2px solid white;
+  border-radius: 2px;
   outline: none;
   cursor: pointer;
 }

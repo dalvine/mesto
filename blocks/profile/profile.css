@@ -21,8 +21,3 @@
   }
 }
 
-@media screen and (max-width: 448px) {
-  .profile {
-    min-height: 286px;
-  }
-}
