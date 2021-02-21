@@ -1,5 +1,5 @@
 .header__logo {
-  position: absolute;
+  display: block;
   width: 144px;
   height: 33px;
   background-image: url(../../../images/logo.svg);
@@ -10,6 +10,6 @@
   .header__logo {
     width: 107px;
     height: 25px;
-    left: 27px;
+    margin-left: 27px;
   }
 }
