@@ -1,4 +1,4 @@
-.author__name {
+.author__fullname {
   margin: 0;
   grid-area: author-name;
   align-self: end;
@@ -11,13 +11,13 @@
 }
 
 @media screen and (max-width: 768px) {
-  .author__name {
+  .author__fullname {
     font-size: 34px;
   }
 }
 
 @media screen and (max-width: 448px) {
-  .author__name {
+  .author__fullname {
     margin-bottom: 14px;
     text-align: center;
     font-size: 27px;

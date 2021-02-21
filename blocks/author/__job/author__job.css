@@ -1,6 +1,6 @@
-.author__about {
+.author__job {
   margin: 0;
-  grid-area: author-about;
+  grid-area: author-job;
   font-weight: normal;
   font-size: 18px;
   line-height: 1.21;
@@ -10,13 +10,13 @@
 }
 
 @media screen and (max-width: 768px) {
-  .author__about {
+  .author__job {
     font-size: 16px;
   }
 }
 
 @media screen and (max-width: 448px) {
-  .author__about {
+  .author__job {
     text-align: center;
     font-size: 14px;
   }

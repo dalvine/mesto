@@ -17,8 +17,8 @@
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__button-add/profile__button-add.css);
 @import url(../blocks/author/author.css);
-@import url(../blocks/author/__about/author__about.css);
-@import url(../blocks/author/__name/author__name.css);
+@import url(../blocks/author/__job/author__job.css);
+@import url(../blocks/author/__fullname/author__fullname.css);
 @import url(../blocks/author/__avatar/author__avatar.css);
 @import url(../blocks/author/__button-edit/author__button-edit.css);
 @import url(../blocks/places/places.css);

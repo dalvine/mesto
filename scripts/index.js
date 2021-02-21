@@ -4,8 +4,8 @@ let popup = page.querySelector('.popup');
 let formEditAuthor = page.querySelector('.form')
 
 let closePopupButton = popup.querySelector('.form__button-close');
-let fullNameAuthor = page.querySelector('.author__name');
-let jobAuthor = page.querySelector('.author__about');
+let fullNameAuthor = page.querySelector('.author__fullname');
+let jobAuthor = page.querySelector('.author__job');
 let fullNameAuthorInput = popup.querySelector('.form__input_content_fullname');
 let jobAuthorInput = popup.querySelector('.form__input_content_job');
 

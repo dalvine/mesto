@@ -5,7 +5,7 @@
   gap: 12px 30px;
   grid-template-areas:
   'avatar author-name button-edit'
-  'avatar author-about ..';
+  'avatar author-job ..';
 }
 
 @media screen and (max-width: 448px) {
@@ -14,7 +14,7 @@
     grid-template-areas:
   'avatar avatar avatar'
   '.. author-name button-edit'
-  '.. author-about ..';
+  '.. author-job ..';
   gap: 0;
   }
 }
