@@ -27,6 +27,7 @@ function saveForm(evt) {
   togglePopup();
 }
 
-editProfileButton.addEventListener('click' , togglePopup);
-closePopupButton.addEventListener('click' , togglePopup);
-formEditAuthor.addEventListener('submit' , saveForm);
+editProfileButton.addEventListener('click', togglePopup);
+closePopupButton.addEventListener('click', togglePopup);
+formEditAuthor.addEventListener('submit', saveForm);
+//
