@@ -17,6 +17,7 @@
 
 @media screen and (max-width: 448px) {
   .author__about {
+    text-align: center;
     font-size: 14px;
   }
 }

@@ -2,7 +2,7 @@
   margin: 0;
   display: grid;
   grid-template-columns: 120px minmax(150px, 294px) max-content;
-  gap: 16px 30px;
+  gap: 12px 30px;
   grid-template-areas:
   'avatar author-name button-edit'
   'avatar author-about ..';
@@ -10,11 +10,11 @@
 
 @media screen and (max-width: 448px) {
   .author {
-    grid-template-columns: 18px  max-content;
+    grid-template-columns: 22px 190px min-content;
     grid-template-areas:
   'avatar avatar avatar'
   '.. author-name button-edit'
-  'author-about author-about author-about';
+  '.. author-about ..';
   gap: 0;
   justify-items: center;
   }

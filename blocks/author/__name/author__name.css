@@ -19,6 +19,7 @@
 @media screen and (max-width: 448px) {
   .author__name {
     margin-bottom: 14px;
+    text-align: center;
     font-size: 27px;
   }
 }

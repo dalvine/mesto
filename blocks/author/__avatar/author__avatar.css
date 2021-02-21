@@ -4,6 +4,7 @@
   grid-area: avatar;
   border-radius: 60px;
   object-fit: hover;
+  justify-self: center;
 }
 
 @media screen and (max-width: 448px) {
