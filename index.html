@@ -14,15 +14,34 @@
     <a href="https://dalvine.github.io/mesto/index.html" class="header__logo" target="_self"></a>
   </header>
   <main class="main">
-    <section class="popup">
+    <section class="popup popup_content_form-author">
       <div class="popup__container">
         <form class="form" name="formAuthor">
           <h2 class="form__header">Редактировать профиль</h2>
           <input class="form__input form__input_content_fullname" type="text" name="author-fullname">
           <input class="form__input form__input_content_job" type="text" name="author-job">
           <button class="form__button" type="submit">Сохранить</button>
-          <button type="button" class="form__button-close"></button>
         </form>
+        <button type="button" class="popup__close popup__close_content_form-author"></button>
+      </div>
+    </section>
+    <section class="popup popup_content_add-place">
+      <div class="popup__container">
+        <form class="form" name="formAddPlace">
+          <h2 class="form__header">Новое место</h2>
+          <input class="form__input form__input_content_name-place" type="text" name="namePlace" placeholder="Название">
+          <input class="form__input form__input_content_link-image" type="text" name="urlPlace"
+            placeholder="Ссылка на картинку">
+          <button class="form__button" type="submit">Создать</button>
+        </form>
+        <button type="button" class="popup__close popup__close_content_form-add-place"></button>
+      </div>
+    </section>
+    <section class="popup popup_content_photo">
+      <div class="popup__photo">
+        <img src="./images/karachaevsk.jpg" alt="Роза-хутор" class="popup__image">
+        <p class="popup__caption">Роза-хутор</p>
+        <button type="button" class="popup__close popup__close_content_photo"></button>
       </div>
     </section>
     <section class="profile">
@@ -36,42 +55,19 @@
     </section>
     <section class="places">
       <ul class="places__list">
-        <li class="place">
-          <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="place__photo">
-          <h2 class="place__title">Крачаевск</h2>
-          <div class="place__like"></div>
-        </li>
-        <li class="place">
-          <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="place__photo">
-          <h2 class="place__title">Гора Эльбрус</h2>
-          <div class="place__like"></div>
-        </li>
-        <li class="place">
-          <img src="./images/dombay.jpg" alt="Домбай" class="place__photo">
-          <h2 class="place__title">Домбай</h2>
-          <div class="place__like"></div>
-        </li>
-        <li class="place">
-          <img src="./images/sochi.jpg" alt="Сочи" class="place__photo">
-          <h2 class="place__title">Сочи</h2>
-          <div class="place__like"></div>
-        </li>
-        <li class="place">
-          <img src="./images/smolensk.jpg" alt="Смоленск" class="place__photo">
-          <h2 class="place__title">Смоленск</h2>
-          <div class="place__like"></div>
-        </li>
-        <li class="place">
-          <img src="./images/rosa-hutor.jpg" alt="Роза-хутор" class="place__photo">
-          <h2 class="place__title">Роза Хутор</h2>
-          <div class="place__like"></div>
-        </li>
       </ul>
     </section>
     <footer class="footer">
       <p class="footer__copy">&copy; 2020 Mesto Russia</p>
     </footer>
   </main>
+  <template id="list-place">
+    <li class="place">
+      <img class="place__photo" src="" alt="">
+      <h2 class="place__title"></h2>
+      <div class="place__like"></div>
+    </li>
+  </template>
   <script src="./scripts/index.js"></script>
 </body>
 
