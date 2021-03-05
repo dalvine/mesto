@@ -87,21 +87,11 @@ function addPlaces(arrayWithPlace) {
       const evtTarget = evt.target;
       openPopupPhoto(evtTarget.src, evtTarget.alt);
     });
-<<<<<<< HEAD
     placeElement.querySelector('.place__delete').addEventListener('click' , evt => {
-=======
-<<<<<<< Updated upstream
-=======
-    placeElement.querySelector('.place__delete').addEventListener('click', evt => {
->>>>>>> feature/popups
       const evtTarget = evt.target;
       const place = evtTarget.closest('.place');
       place.remove();
     });
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> feature/popups
   });
 }
 
