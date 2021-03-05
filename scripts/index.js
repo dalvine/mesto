@@ -17,7 +17,7 @@ const placesList = page.querySelector('.places__list');
 const placeTemplate = page.querySelector('#list-place').content;
 const popupPhoto = page.querySelector('.popup_content_photo');
 const btnClosePopupPhoto = popupPhoto.querySelector('.popup__close_content_photo');
-const popupPhotoContentImg = popupPhoto.querySelector('.popup__image');
+const popupPhotoContentImg = popupPhoto.querySelector('.popup__photo');
 const popupPhotoContentCaption = popupPhoto.querySelector('.popup__caption');
 const initialCards = [
   {
