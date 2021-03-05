@@ -53,12 +53,14 @@ function saveForm(evt) {
   closePopup(popupWithFormEditAuthor);
 }
 
-function addPlace(evt) {
+function createArrayPlace(evt) {
   evt.preventDefault();
   const newPlace = [{ name: '', link: '' }];
   newPlace[0].name = namePlaceInput.value;
   newPlace[0].link = linkPlaceInput.value;
   addPlaces(newPlace);
+  namePlaceInput.value = '';
+  linkPlaceInput.value = '';
   closePopup(popupWithAddPlace);
 }
 
@@ -81,10 +83,18 @@ function addPlaces(arrayWithPlace) {
       const evtTarget = evt.target;
       evtTarget.classList.toggle('place__like_active');
     });
-    placeElement.querySelector('.place__photo').addEventListener('click' , evt => {
+    placeElement.querySelector('.place__photo').addEventListener('click', evt => {
       const evtTarget = evt.target;
       openPopupPhoto(evtTarget.src, evtTarget.alt);
     });
+<<<<<<< Updated upstream
+=======
+    placeElement.querySelector('.place__delete').addEventListener('click', evt => {
+      const evtTarget = evt.target;
+      const place = evtTarget.closest('.place');
+      place.remove();
+    });
+>>>>>>> Stashed changes
   });
 }
 
@@ -105,6 +115,6 @@ editProfileButton.addEventListener('click', () => {
 });
 btnClosePopupWithFormEditAuthor.addEventListener('click', () => closePopup(popupWithFormEditAuthor));
 addPlaceButton.addEventListener('click', () => openPopup(popupWithAddPlace));
-formAddPlace.addEventListener('submit', addPlace);
+formAddPlace.addEventListener('submit', createArrayPlace);
 btnClosePopupWithAddPlace.addEventListener('click', () => closePopup(popupWithAddPlace));
-btnClosePopupPhoto.addEventListener('click' , () => closePopup(popupPhoto));
+btnClosePopupPhoto.addEventListener('click', () => closePopup(popupPhoto));
