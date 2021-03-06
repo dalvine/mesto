@@ -17,6 +17,7 @@
 
 .popup__close:hover {
   opacity: 0.6;
+  -webkit-transition: opacity 1s linear;
   transition: opacity 1s linear;
 }
 

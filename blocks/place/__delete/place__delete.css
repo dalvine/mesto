@@ -13,5 +13,6 @@
 
 .place__delete:hover {
   opacity: 0.6;
+  -webkit-transition: .3s;
   transition: .3s;
 }

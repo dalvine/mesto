@@ -3,8 +3,10 @@
   height: 120px;
   grid-area: avatar;
   border-radius: 60px;
-  object-fit: cover;
-  justify-self: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
 
 @media screen and (max-width: 448px) {

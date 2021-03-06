@@ -9,6 +9,7 @@
 
 .place__like:hover {
   opacity: .5;
+  -webkit-transition: opacity .2s linear;
   transition: opacity .2s linear;
 }
 

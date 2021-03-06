@@ -2,6 +2,7 @@
   margin: 0 auto;
   padding-left: 0;
   max-width: 880px;
+  display: -ms-grid;
   display: grid;
   list-style: none;
   grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));

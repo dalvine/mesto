@@ -87,7 +87,7 @@ function addPlaces(arrayWithPlace) {
       const evtTarget = evt.target;
       openPopupPhoto(evtTarget.src, evtTarget.alt);
     });
-    placeElement.querySelector('.place__delete').addEventListener('click' , evt => {
+    placeElement.querySelector('.place__delete').addEventListener('click', evt => {
       const evtTarget = evt.target;
       const place = evtTarget.closest('.place');
       place.remove();
