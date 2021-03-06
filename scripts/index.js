@@ -19,46 +19,20 @@ const popupPhoto = page.querySelector('.popup_content_photo');
 const btnClosePopupPhoto = popupPhoto.querySelector('.popup__close_content_photo');
 const popupPhotoContentImg = popupPhoto.querySelector('.popup__photo');
 const popupPhotoContentCaption = popupPhoto.querySelector('.popup__caption');
-const initialCards = [
-  {
-    name: 'Карачаевск',
-    link: './images/karachaevsk.jpg'
-  },
-  {
-    name: 'Гора Эльбрус',
-    link: './images/elbrus.jpg'
-  },
-  {
-    name: 'Домбай',
-    link: './images/dombay.jpg'
-  },
-  {
-    name: 'Сочи',
-    link: './images/sochi.jpg'
-  },
-  {
-    name: 'Смоленск',
-    link: './images/smolensk.jpg'
-  },
-  {
-    name: 'Роза-хутор',
-    link: './images/rosa-hutor.jpg'
-  }
-];
 
-function saveForm(evt) {
+function submitEditProfileForm(evt) {
   evt.preventDefault();
   fullNameAuthor.textContent = fullNameAuthorInput.value;
   jobAuthor.textContent = jobAuthorInput.value;
   closePopup(popupWithFormEditAuthor);
 }
 
-function createArrayPlace(evt) {
+function submitAddCardForm(evt) {
   evt.preventDefault();
-  const newArrayPlace = [{ name: '', link: '' }];
-  newArrayPlace[0].name = namePlaceInput.value;
-  newArrayPlace[0].link = linkPlaceInput.value;
-  addPlaces(newArrayPlace);
+  const newPlace = [];
+  newPlace.name = namePlaceInput.value;
+  newPlace.link = linkPlaceInput.value;
+  addCard(createCard(newPlace));
   namePlaceInput.value = '';
   linkPlaceInput.value = '';
   closePopup(popupWithAddPlace);
@@ -72,39 +46,44 @@ function closePopup(popupContent) {
   popupContent.classList.remove('popup_opened');
 }
 
-function addPlaces(arrayWithPlace) {
-  arrayWithPlace.forEach(place => {
-    const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
-    placeElement.querySelector('.place__photo').src = place.link;
-    placeElement.querySelector('.place__photo').alt = place.name;
-    placeElement.querySelector('.place__title').textContent = place.name;
-    placeElement.querySelector('.place__like').addEventListener('click', evt => {
-      const evtTarget = evt.target;
-      evtTarget.classList.toggle('place__like_active');
-    });
-    placeElement.querySelector('.place__photo').addEventListener('click', evt => {
-      const evtTarget = evt.target;
-      openPopupPhoto(evtTarget.src, evtTarget.alt);
-    });
-    placeElement.querySelector('.place__delete').addEventListener('click', evt => {
-      const evtTarget = evt.target;
-      const place = evtTarget.closest('.place');
-      place.remove();
-    });
-    placesList.prepend(placeElement);
+function createCard(place) {
+  const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
+  const placePhoto = placeElement.querySelector('.place__photo');
+  placePhoto.src = place.link;
+  placePhoto.alt = place.name;
+  placeElement.querySelector('.place__title').textContent = place.name;
+  return placeElement;
+}
+
+function addCard(placeElement) {
+  placeElement.querySelector('.place__like').addEventListener('click', evt => {
+    const evtTarget = evt.target;
+    evtTarget.classList.toggle('place__like_active');
   });
+  placeElement.querySelector('.place__photo').addEventListener('click', evt => {
+    const evtTarget = evt.target;
+    openPopupPhoto(evtTarget.src, evtTarget.alt);
+  });
+  placeElement.querySelector('.place__delete').addEventListener('click', evt => {
+    const evtTarget = evt.target;
+    const place = evtTarget.closest('.place');
+    place.remove();
+  });
+  placesList.prepend(placeElement);
 }
 
 function openPopupPhoto(link, name) {
   popupPhotoContentImg.src = link;
   popupPhotoContentImg.alt = name;
   popupPhotoContentCaption.textContent = name;
-  popupPhoto.classList.add('popup_opened');
+  openPopup(popupPhoto);
 }
 
 
-addPlaces(initialCards);
-formEditAuthor.addEventListener('submit', saveForm);
+initialCards.forEach(place => {
+  addCard(createCard(place));
+});
+formEditAuthor.addEventListener('submit', submitEditProfileForm);
 editProfileButton.addEventListener('click', () => {
   openPopup(popupWithFormEditAuthor);
   fullNameAuthorInput.value = fullNameAuthor.textContent;
@@ -112,6 +91,6 @@ editProfileButton.addEventListener('click', () => {
 });
 btnClosePopupWithFormEditAuthor.addEventListener('click', () => closePopup(popupWithFormEditAuthor));
 addPlaceButton.addEventListener('click', () => openPopup(popupWithAddPlace));
-formAddPlace.addEventListener('submit', createArrayPlace);
+formAddPlace.addEventListener('submit', submitAddCardForm);
 btnClosePopupWithAddPlace.addEventListener('click', () => closePopup(popupWithAddPlace));
 btnClosePopupPhoto.addEventListener('click', () => closePopup(popupPhoto));
