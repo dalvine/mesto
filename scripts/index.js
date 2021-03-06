@@ -55,10 +55,10 @@ function saveForm(evt) {
 
 function createArrayPlace(evt) {
   evt.preventDefault();
-  const newPlace = [{ name: '', link: '' }];
-  newPlace[0].name = namePlaceInput.value;
-  newPlace[0].link = linkPlaceInput.value;
-  addPlaces(newPlace);
+  const newArrayPlace = [{ name: '', link: '' }];
+  newArrayPlace[0].name = namePlaceInput.value;
+  newArrayPlace[0].link = linkPlaceInput.value;
+  addPlaces(newArrayPlace);
   namePlaceInput.value = '';
   linkPlaceInput.value = '';
   closePopup(popupWithAddPlace);
@@ -78,7 +78,6 @@ function addPlaces(arrayWithPlace) {
     placeElement.querySelector('.place__photo').src = place.link;
     placeElement.querySelector('.place__photo').alt = place.name;
     placeElement.querySelector('.place__title').textContent = place.name;
-    placesList.prepend(placeElement);
     placeElement.querySelector('.place__like').addEventListener('click', evt => {
       const evtTarget = evt.target;
       evtTarget.classList.toggle('place__like_active');
@@ -92,6 +91,7 @@ function addPlaces(arrayWithPlace) {
       const place = evtTarget.closest('.place');
       place.remove();
     });
+    placesList.prepend(placeElement);
   });
 }
 
