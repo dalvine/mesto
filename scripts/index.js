@@ -29,7 +29,7 @@ function submitEditProfileForm(evt) {
 
 function submitAddCardForm(evt) {
   evt.preventDefault();
-  const newPlace = [];
+  const newPlace = {};
   newPlace.name = namePlaceInput.value;
   newPlace.link = linkPlaceInput.value;
   addCard(createCard(newPlace));
@@ -52,10 +52,6 @@ function createCard(place) {
   placePhoto.src = place.link;
   placePhoto.alt = place.name;
   placeElement.querySelector('.place__title').textContent = place.name;
-  return placeElement;
-}
-
-function addCard(placeElement) {
   placeElement.querySelector('.place__like').addEventListener('click', evt => {
     const evtTarget = evt.target;
     evtTarget.classList.toggle('place__like_active');
@@ -69,6 +65,10 @@ function addCard(placeElement) {
     const place = evtTarget.closest('.place');
     place.remove();
   });
+  return placeElement;
+}
+
+function addCard(placeElement) {
   placesList.prepend(placeElement);
 }
 
