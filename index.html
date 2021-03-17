@@ -18,9 +18,11 @@
       <div class="popup__container">
         <form class="form" name="formAuthor">
           <h2 class="form__header">Редактировать профиль</h2>
-          <input class="form__input form__input_content_fullname" type="text" name="author-fullname" placeholder="Имя">
-          <input class="form__input form__input_content_job" type="text" name="author-job" placeholder="Вид деятельности">
-          <button class="form__button" type="submit">Сохранить</button>
+          <input class="form__input form__input_content_fullname" id="input-name" type="text" name="author-fullname" placeholder="Имя">
+          <span class="form__input-error input-name-error"></span>
+          <input class="form__input form__input_content_job" id="input-job" type="text" name="author-job" placeholder="Вид деятельности">
+          <span class="form__input-error input-job-error"></span>
+          <button class="form__button" type="submit" disabled>Сохранить</button>
         </form>
         <button type="button" class="popup__close popup__close_content_form-author"></button>
       </div>
@@ -29,9 +31,11 @@
       <div class="popup__container">
         <form class="form" name="formAddPlace">
           <h2 class="form__header">Новое место</h2>
-          <input class="form__input form__input_content_name-place" type="text" name="namePlace" placeholder="Название">
-          <input class="form__input form__input_content_link-image" type="text" name="urlPlace"
+          <input class="form__input form__input_content_name-place" id="input-name-place" type="text" name="namePlace" placeholder="Название">
+          <span class="form__input-error input-name-place-error"></span>
+          <input class="form__input form__input_content_link-image" id="input-url-place" type="text" name="urlPlace"
             placeholder="Ссылка на картинку">
+            <span class="form__input-error input-url-place-error"></span>
           <button class="form__button" type="submit">Создать</button>
         </form>
         <button type="button" class="popup__close popup__close_content_form-add-place"></button>
