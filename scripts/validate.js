@@ -2,7 +2,6 @@ const checkInput = (inputElement, formElement, selectors) => {
   const inputErrorMessage = formElement.querySelector(`.${inputElement.id}-error`)
 
   if (!inputElement.validity.valid) {
-    //если не валидна то показываем сообщение, задаем стилизацию поля
     inputElement.classList.add(selectors.inputErrorClass)
     inputErrorMessage.classList.add(selectors.errorClass)
     inputErrorMessage.textContent = inputElement.validationMessage
@@ -18,7 +17,7 @@ const setEventListeners = (formElement, selectors) => {
   inputList.forEach(inputElement => {
     inputElement.addEventListener('input', () => {
       checkInput(inputElement, formElement, selectors)
-      toggleButton(formElement, inputList, selectors) //проверяем инпут на ошибки
+      toggleButton(formElement, inputList, selectors)
     })
     toggleButton(formElement, inputList, selectors)
   })
