@@ -33,8 +33,8 @@ const submitAddCardForm = evt => {
   newPlace.name = namePlaceInput.value;
   newPlace.link = linkPlaceInput.value;
   addCard(createCard(newPlace));
-  namePlaceInput.value = '';
-  linkPlaceInput.value = '';
+  evt.target.reset();
+  popupWithAddPlace.querySelector('.form__button').classList.add('form__button_disabled')
   closePopup(popupWithAddPlace);
 }
 
@@ -44,7 +44,8 @@ const closePopupOverlay = evt => {
 
 const handleEscPress = (evt) => {
   const openedPopup = document.querySelector('.popup_opened')
-  if (evt.keyCode === 27) {
+  const EscKey = 27;
+  if (evt.keyCode === EscKey) {
     closePopup(openedPopup)
   }
 }
@@ -71,16 +72,15 @@ const createCard = place => {
   placePhoto.alt = place.name;
   placeElement.querySelector('.place__title').textContent = place.name;
   placeElement.querySelector('.place__like').addEventListener('click', evt => {
-    const evtTarget = evt.target;
-    evtTarget.classList.toggle('place__like_active');
+    evt.target.classList.toggle('place__like_active');
   });
   placeElement.querySelector('.place__photo').addEventListener('click', evt => {
     const evtTarget = evt.target;
     openPopupPhoto(evtTarget.src, evtTarget.alt);
   });
   placeElement.querySelector('.place__delete').addEventListener('click', evt => {
-    const evtTarget = evt.target;
-    const place = evtTarget.closest('.place');
+    evt.target.closest('.place');
+    const place = evt.target.closest('.place');
     place.remove();
   });
   return placeElement;
@@ -109,10 +109,10 @@ formEditAuthor.addEventListener('submit', submitEditProfileForm);
 editProfileButton.addEventListener('click', () => {
   openPopup(popupWithFormEditAuthor);
   fillFormAuthor()
+  popupWithFormEditAuthor.querySelector('.form__button').classList.remove('form__button_disabled')
 });
 btnClosePopupWithFormEditAuthor.addEventListener('click', () => closePopup(popupWithFormEditAuthor));
 addPlaceButton.addEventListener('click', () => openPopup(popupWithAddPlace));
 formAddPlace.addEventListener('submit', submitAddCardForm);
 btnClosePopupWithAddPlace.addEventListener('click', () => closePopup(popupWithAddPlace));
 btnClosePopupPhoto.addEventListener('click', () => closePopup(popupPhoto));
-fillFormAuthor()
