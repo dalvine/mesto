@@ -16,3 +16,9 @@
       -ms-flex-align: baseline;
           align-items: baseline;
 }
+
+@media screen and (max-width: 920px) {
+  .place {
+    max-width: 282px;
+  }
+}

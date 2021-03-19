@@ -14,3 +14,12 @@
     width: 90%;
   }
 }
+
+@media screen and (max-width: 646px) {
+  .places__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
