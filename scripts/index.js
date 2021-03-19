@@ -20,14 +20,14 @@ const btnClosePopupPhoto = popupPhoto.querySelector('.popup__close_content_photo
 const popupPhotoContentImg = popupPhoto.querySelector('.popup__photo');
 const popupPhotoContentCaption = popupPhoto.querySelector('.popup__caption');
 
-function submitEditProfileForm(evt) {
+const submitEditProfileForm = evt => {
   evt.preventDefault();
   fullNameAuthor.textContent = fullNameAuthorInput.value;
   jobAuthor.textContent = jobAuthorInput.value;
   closePopup(popupWithFormEditAuthor);
 }
 
-function submitAddCardForm(evt) {
+const submitAddCardForm = evt => {
   evt.preventDefault();
   const newPlace = {};
   newPlace.name = namePlaceInput.value;
@@ -38,15 +38,33 @@ function submitAddCardForm(evt) {
   closePopup(popupWithAddPlace);
 }
 
-function openPopup(popupContent) {
-  popupContent.classList.add('popup_opened');
+const closePopupOverlay = evt => {
+  closePopup(evt.currentTarget)
 }
 
-function closePopup(popupContent) {
-  popupContent.classList.remove('popup_opened');
+const handleEscPress = (evt) => {
+  const openedPopup = document.querySelector('.popup_opened')
+  if (evt.keyCode === 27) {
+    closePopup(openedPopup)
+  }
 }
 
-function createCard(place) {
+const openPopup = popup => {
+  const popupContainer = popup.firstElementChild
+  popupContainer.addEventListener('mousedown', evt => evt.stopPropagation())
+  //mousedown т.к. при выделении текста, если курсор выходит за пределы попапа, то он закрывается
+  popup.addEventListener('mousedown', closePopupOverlay)
+  document.addEventListener('keydown', handleEscPress)
+  popup.classList.add('popup_opened');
+}
+
+const closePopup = popup => {
+  popup.classList.remove('popup_opened');
+  popup.removeEventListener('mousedown', closePopupOverlay)
+  document.removeEventListener('keydown', handleEscPress)
+}
+
+const createCard = place => {
   const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
   const placePhoto = placeElement.querySelector('.place__photo');
   placePhoto.src = place.link;
@@ -68,17 +86,21 @@ function createCard(place) {
   return placeElement;
 }
 
-function addCard(placeElement) {
+const addCard = placeElement => {
   placesList.prepend(placeElement);
 }
 
-function openPopupPhoto(link, name) {
+const openPopupPhoto = (link, name) => {
   popupPhotoContentImg.src = link;
   popupPhotoContentImg.alt = name;
   popupPhotoContentCaption.textContent = name;
   openPopup(popupPhoto);
 }
 
+const fillFormAuthor = () => {
+  fullNameAuthorInput.value = fullNameAuthor.textContent;
+  jobAuthorInput.value = jobAuthor.textContent;
+}
 
 initialCards.forEach(place => {
   addCard(createCard(place));
@@ -86,11 +108,11 @@ initialCards.forEach(place => {
 formEditAuthor.addEventListener('submit', submitEditProfileForm);
 editProfileButton.addEventListener('click', () => {
   openPopup(popupWithFormEditAuthor);
-  fullNameAuthorInput.value = fullNameAuthor.textContent;
-  jobAuthorInput.value = jobAuthor.textContent;
+  fillFormAuthor()
 });
 btnClosePopupWithFormEditAuthor.addEventListener('click', () => closePopup(popupWithFormEditAuthor));
 addPlaceButton.addEventListener('click', () => openPopup(popupWithAddPlace));
 formAddPlace.addEventListener('submit', submitAddCardForm);
 btnClosePopupWithAddPlace.addEventListener('click', () => closePopup(popupWithAddPlace));
 btnClosePopupPhoto.addEventListener('click', () => closePopup(popupPhoto));
+fillFormAuthor()
