@@ -1,3 +1,5 @@
+import {FormValidator} from './FormValidator.js'
+
 const page = document.querySelector('.page');
 const editProfileButton = page.querySelector('.author__button-edit');
 const formEditAuthor = page.querySelector('.form[name=formAuthor]');
@@ -116,3 +118,16 @@ formAddPlace.addEventListener('submit', submitAddCardForm);
 btnClosePopupWithAddPlace.addEventListener('click', () => closePopup(popupWithAddPlace));
 btnClosePopupPhoto.addEventListener('click', () => closePopup(popupPhoto));
 fillFormAuthor()
+
+
+
+
+
+const FormValidator = new FormValidator({
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__button',
+  inactiveButtonClass: 'form__button_disabled',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_active'
+})
