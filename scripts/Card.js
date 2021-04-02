@@ -2,9 +2,9 @@ export { Card }
 import { openPopupPhoto } from './index.js'
 
 class Card {
-  constructor(catdList, templateElement) {
-    this._name = catdList.name;
-    this._link = catdList.link;
+  constructor(cardList, templateElement) {
+    this._name = cardList.name;
+    this._link = cardList.link;
     this._template = templateElement;
   }
 
@@ -27,9 +27,7 @@ class Card {
   } // обрабатываем удаление
 
   _hadleOpenPopup() {
-    const src = this._view.querySelector('.place__photo').src
-    const alt = this._view.querySelector('.place__photo').alt
-    openPopupPhoto(src, alt)
+    openPopupPhoto(this._name, this._link)
   } // обрабатываем открытие попапа
 
   _fillCard() {
