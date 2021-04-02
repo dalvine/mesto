@@ -5,10 +5,13 @@
   height: 20px;
   background-image: url(../../../images/delete.svg);
   background-size: cover;
+  background-color: transparent;
   position: absolute;
   right: 15px;
   top: 18px;
   cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 .place__delete:hover {
