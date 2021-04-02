@@ -1,4 +1,7 @@
-import {FormValidator} from './FormValidator.js'
+import { FormValidator } from './FormValidator.js'
+import { Card } from './Card.js'
+export { openPopupPhoto }
+
 
 const page = document.querySelector('.page');
 const editProfileButton = page.querySelector('.author__button-edit');
@@ -21,6 +24,15 @@ const popupPhoto = page.querySelector('.popup_content_photo');
 const btnClosePopupPhoto = popupPhoto.querySelector('.popup__close_content_photo');
 const popupPhotoContentImg = popupPhoto.querySelector('.popup__photo');
 const popupPhotoContentCaption = popupPhoto.querySelector('.popup__caption');
+const configForValidation = {
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__button',
+  inactiveButtonClass: 'form__button_disabled',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_active'
+}
+const AddPlaceFormValidation = new FormValidator(configForValidation, formAddPlace)
+const FormAuthorFormValidation = new FormValidator(configForValidation, formEditAuthor)
 
 const submitEditProfileForm = evt => {
   evt.preventDefault();
@@ -31,12 +43,12 @@ const submitEditProfileForm = evt => {
 
 const submitAddCardForm = evt => {
   evt.preventDefault();
-  const newPlace = {};
-  newPlace.name = namePlaceInput.value;
-  newPlace.link = linkPlaceInput.value;
-  addCard(createCard(newPlace));
-  evt.target.reset();
-  popupWithAddPlace.querySelector('.form__button').classList.add('form__button_disabled')
+  const place = { name: namePlaceInput.value, link: linkPlaceInput.value }
+  const cardElement = new Card(place, placeTemplate)
+  const newCard = cardElement.createCard()
+  addCard(newCard)
+  namePlaceInput.value = '';
+  linkPlaceInput.value = '';
   closePopup(popupWithAddPlace);
 }
 
@@ -55,7 +67,8 @@ const handleEscPress = (evt) => {
 const openPopup = popup => {
   const popupContainer = popup.firstElementChild
   popupContainer.addEventListener('mousedown', evt => evt.stopPropagation())
-  //mousedown т.к. при выделении текста, если курсор выходит за пределы попапа, то он закрывается
+  // RUS - событие 'mousedown' т.к. при выделении текста, если курсор выходит за пределы попапа, то он закрывается
+  // ENG - event 'mousedown' because when selecting text, if the cursor goes beyond the popup, then it is closed
   popup.addEventListener('mousedown', closePopupOverlay)
   document.addEventListener('keydown', handleEscPress)
   popup.classList.add('popup_opened');
@@ -65,27 +78,6 @@ const closePopup = popup => {
   popup.classList.remove('popup_opened');
   popup.removeEventListener('mousedown', closePopupOverlay)
   document.removeEventListener('keydown', handleEscPress)
-}
-
-const createCard = place => {
-  const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
-  const placePhoto = placeElement.querySelector('.place__photo');
-  placePhoto.src = place.link;
-  placePhoto.alt = place.name;
-  placeElement.querySelector('.place__title').textContent = place.name;
-  placeElement.querySelector('.place__like').addEventListener('click', evt => {
-    evt.target.classList.toggle('place__like_active');
-  });
-  placeElement.querySelector('.place__photo').addEventListener('click', evt => {
-    const evtTarget = evt.target;
-    openPopupPhoto(evtTarget.src, evtTarget.alt);
-  });
-  placeElement.querySelector('.place__delete').addEventListener('click', evt => {
-    evt.target.closest('.place');
-    const place = evt.target.closest('.place');
-    place.remove();
-  });
-  return placeElement;
 }
 
 const addCard = placeElement => {
@@ -105,26 +97,22 @@ const fillFormAuthor = () => {
 }
 
 initialCards.forEach(place => {
-  addCard(createCard(place));
+  const cardElement = new Card(place, placeTemplate)
+  addCard(cardElement.createCard());
 });
+
 formEditAuthor.addEventListener('submit', submitEditProfileForm);
 editProfileButton.addEventListener('click', () => {
-  openPopup(popupWithFormEditAuthor);
+  openPopup(popupWithFormEditAuthor)
   fillFormAuthor()
-  popupWithFormEditAuthor.querySelector('.form__button').classList.remove('form__button_disabled')
+  FormAuthorFormValidation.enableValidation()
 });
 btnClosePopupWithFormEditAuthor.addEventListener('click', () => closePopup(popupWithFormEditAuthor));
-addPlaceButton.addEventListener('click', () => openPopup(popupWithAddPlace));
+addPlaceButton.addEventListener('click', () => {
+  AddPlaceFormValidation.enableValidation()
+  openPopup(popupWithAddPlace)
+});
 formAddPlace.addEventListener('submit', submitAddCardForm);
 btnClosePopupWithAddPlace.addEventListener('click', () => closePopup(popupWithAddPlace));
 btnClosePopupPhoto.addEventListener('click', () => closePopup(popupPhoto));
 fillFormAuthor()
-
-const FormValidator = new FormValidator({
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__button',
-  inactiveButtonClass: 'form__button_disabled',
-  inputErrorClass: 'form__input_type_error',
-  errorClass: 'form__input-error_active'
-})
