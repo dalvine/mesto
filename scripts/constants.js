@@ -1,3 +1,12 @@
+export {
+  editProfileButton, formEditAuthor, fullNameAuthorInput,
+  jobAuthorInput, formAddPlace, namePlaceInput, linkPlaceInput,
+  addPlaceButton, btnClosePopupWithFormEditAuthor, btnClosePopupWithAddPlace,
+  fullNameAuthor, jobAuthor, popupWithFormEditAuthor, popupWithAddPlace,
+  placesList, placeTemplate, popupPhoto, btnClosePopupPhoto,
+  popupPhotoContentImg, popupPhotoContentCaption, configForValidation
+}
+
 const page = document.querySelector('.page');
 const editProfileButton = page.querySelector('.author__button-edit');
 const formEditAuthor = page.querySelector('.form[name=formAuthor]');
@@ -25,68 +34,4 @@ const configForValidation = {
   inactiveButtonClass: 'form__button_disabled',
   inputErrorClass: 'form__input_type_error',
   errorClass: 'form__input-error_active'
-}
-const addPlaceFormValidation = new FormValidator(configForValidation, formAddPlace)
-const formAuthorFormValidation = new FormValidator(configForValidation, formEditAuthor)
-
-const submitEditProfileForm = evt => {
-  evt.preventDefault();
-  fullNameAuthor.textContent = fullNameAuthorInput.value;
-  jobAuthor.textContent = jobAuthorInput.value;
-  closePopup(popupWithFormEditAuthor);
-}
-
-const submitAddCardForm = evt => {
-  evt.preventDefault();
-  const place = { name: namePlaceInput.value, link: linkPlaceInput.value }
-  const cardElement = new Card(place, placeTemplate)
-  const newCard = cardElement.createCard()
-  addCard(newCard)
-  namePlaceInput.value = '';
-  linkPlaceInput.value = '';
-  closePopup(popupWithAddPlace);
-}
-
-const closePopupOverlay = evt => {
-  closePopup(evt.currentTarget)
-}
-
-const handleEscPress = (evt) => {
-  const openedPopup = document.querySelector('.popup_opened')
-  const EscKey = 27;
-  if (evt.keyCode === EscKey) {
-    closePopup(openedPopup)
-  }
-}
-
-const openPopup = popup => {
-  const popupContainer = popup.firstElementChild
-  popupContainer.addEventListener('mousedown', evt => evt.stopPropagation())
-  // RUS - событие 'mousedown' т.к. при выделении текста, если курсор выходит за пределы попапа, то он закрывается
-  // ENG - event 'mousedown' because when selecting text, if the cursor goes beyond the popup, then it is closed
-  popup.addEventListener('mousedown', closePopupOverlay)
-  document.addEventListener('keydown', handleEscPress)
-  popup.classList.add('popup_opened');
-}
-
-const closePopup = popup => {
-  popup.classList.remove('popup_opened');
-  popup.removeEventListener('mousedown', closePopupOverlay)
-  document.removeEventListener('keydown', handleEscPress)
-}
-
-const addCard = placeElement => {
-  placesList.prepend(placeElement);
-}
-
-const openPopupPhoto = (link, name) => {
-  popupPhotoContentImg.src = link;
-  popupPhotoContentImg.alt = name;
-  popupPhotoContentCaption.textContent = name;
-  openPopup(popupPhoto);
-}
-
-const fillFormAuthor = () => {
-  fullNameAuthorInput.value = fullNameAuthor.textContent;
-  jobAuthorInput.value = jobAuthor.textContent;
 }

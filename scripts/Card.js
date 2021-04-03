@@ -27,7 +27,7 @@ class Card {
   } // обрабатываем удаление
 
   _hadleOpenPopup() {
-    openPopupPhoto(this._name, this._link)
+    openPopupPhoto(this._link, this._name)
   } // обрабатываем открытие попапа
 
   _fillCard() {
