@@ -54,8 +54,8 @@ const popupAddPlace = new PopupWithForm(
       placeTemplate,
       () => {
         const popupWithImage = new PopupWithImage({
-          name: element.name,
-          link: element.link,
+          name: inputValues['namePlace'],
+          link: inputValues['urlPlace']
         }, '.popup_content_photo')
         popupWithImage.open()
         popupWithImage.setEventListeners()
