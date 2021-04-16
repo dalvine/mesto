@@ -4,7 +4,9 @@
   "description": "​\r Профиль с фотографиями с возможностью редактирования информации об авторе.\r ​\r ## Описание файлов проекта.\r ​\r | **Название файла** | **Содержание файла**                                  |\r |--------------------|-------------------------------------------------------|\r | blocks/            | Стили блоков                                          |\r | images/            | Изображения                                           |\r | pages/             | Стили страниц                                         |\r | scripts/           | Файлы скриптов                                        |\r | vendor/            | Файлы сторонних разработчиков, подключенные к проекту |\r | index.html         | Главная страница                                      |\r | .editorconfig      | Конфигурационный файл для редактора кода              |\r | .nojekyll          | Генератор статичных сайтов для GHPages                |\r | README.md          | Описание                                              |\r ​\r ## Описание применённых технологий.\r ​\r Проект был выполнен с помощью Flexbox-вёрстки, CSS Grid руководствуясь БЭМ-методологией.\r Редактирование профиля, добавление карточек реализовано с помощью JavaScript.\r Применяется методология ООП.\r ​\r ## Что исправить?\r ​\r -  Добавить возможность менять аватарку профиля\r -  Добавить описание фотографиям\r -  Рефакторинг остального кода",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist && webpack --mode production",
+    "dev": "webpack serve --mode development"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,21 @@
   "homepage": "https://github.com/dalvine/mesto#readme",
   "dependencies": {
     "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.1",
+    "cssnano": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.4.1",
+    "postcss": "^8.2.10",
+    "postcss-loader": "^5.2.0",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }

@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
 </head>
 
@@ -53,7 +52,7 @@
     </section>
     <section class="profile">
       <div class="author">
-        <img src="./images/author-avatar.jpg" alt="Аватарка автора" class="author__avatar">
+        <img src="<%=require('./images/author-avatar.jpg')%>" alt="Аватарка автора" class="author__avatar">
         <h1 class="author__fullname">Жак-Ив Кусто</h1>
         <p class="author__job">Исследователь океана</p>
         <button type="button" class="author__button-edit"></button>
@@ -76,7 +75,7 @@
       <button class="place__delete"></button>
     </li>
   </template>
-  <script type="module" src="./pages/index.js"></script>
+
 </body>
 
 </html>

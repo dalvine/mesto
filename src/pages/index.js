@@ -9,6 +9,7 @@ import { fillFormAuthor } from '../utils/utils.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import Section from '../components/Section.js'
 import PopupWithForm from '../components/PopupWithForm.js'
+import './index.css'
 
 
 const addPlaceFormValidation = new FormValidator(configForValidation, formAddPlace)
