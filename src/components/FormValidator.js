@@ -11,22 +11,34 @@ class FormValidator {
     this._form = formElement;
   }
 
-  _checkValidInput(formElement, inputElement) {
-    const inputErrorMessage = formElement.querySelector(`.${inputElement.id}-error`)
+  _checkValidInput(inputElement) {
+    const inputErrorMessage = this._form.querySelector(`.${inputElement.id}-error`)
 
     if (!inputElement.validity.valid) {
-      inputElement.classList.add(this._inputErrorClass)
-      inputErrorMessage.classList.add(this._errorClass)
-      inputErrorMessage.textContent = inputElement.validationMessage
+      this._activateError(inputElement, inputErrorMessage)
     } else {
-      inputElement.classList.remove(this._inputErrorClass)
-      inputErrorMessage.classList.remove(this._errorClass)
-      inputErrorMessage.textContent = ''
+      this._disableError(inputElement, inputErrorMessage)
     }
   }
 
-  _toggleButtonSubmit(formElement, inputList) {
-    const buttonElement = formElement.querySelector(this._submitButtonSelector)
+  _activateError(inputElement, inputErrorMessage) {
+    inputElement.classList.add(this._inputErrorClass)
+    inputErrorMessage.classList.add(this._errorClass)
+    inputErrorMessage.textContent = inputElement.validationMessage
+  }
+
+  _disableError(inputElement, inputErrorMessage) {
+    inputElement.classList.remove(this._inputErrorClass)
+    inputErrorMessage.classList.remove(this._errorClass)
+    inputErrorMessage.textContent = ''
+  }
+
+  _removeErrorInput() {
+
+  }
+
+  _toggleButtonSubmit(inputList) {
+    const buttonElement = this._form.querySelector(this._submitButtonSelector)
 
     if (this._hasInvalidInput(inputList)) {
       buttonElement.classList.add(this._inactiveButtonClass)
@@ -44,8 +56,8 @@ class FormValidator {
 
   _setEventListeners(inputElement, inputList) {
     inputElement.addEventListener('input', () => {
-      this._checkValidInput(this._form, inputElement)
-      this._toggleButtonSubmit(this._form, inputList)
+      this._checkValidInput(inputElement)
+      this._toggleButtonSubmit(inputList)
     })
   }
 
@@ -53,9 +65,9 @@ class FormValidator {
   enableValidation() {
     const inputList = Array.from(this._form.querySelectorAll(this._inputSelector))
     inputList.forEach(inputElement => {
-      this._checkValidInput(this._form, inputElement)
+      this._checkValidInput(inputElement)
       this._setEventListeners(inputElement, inputList)
     })
-    this._toggleButtonSubmit(this._form, inputList)
+    this._toggleButtonSubmit(inputList)
   }
 }
