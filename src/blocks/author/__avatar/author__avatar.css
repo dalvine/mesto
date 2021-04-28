@@ -1,12 +1,7 @@
 .author__avatar {
-  width: 120px;
-  height: 120px;
   grid-area: avatar;
-  border-radius: 60px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -ms-grid-column-align: center;
-      justify-self: center;
+  justify-self: center;
+  position: relative;
 }
 
 @media screen and (max-width: 448px) {

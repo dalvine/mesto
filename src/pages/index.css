@@ -28,6 +28,9 @@
 @import url(../blocks/form/__input/_type/form__input_type_error.css);
 @import url(../blocks/form/__input-error/form__input-error.css);
 @import url(../blocks/form/__input-error/_active/form__input-error_active.css);
+@import url(../blocks/confirmation-box/confirmation-box.css);
+@import url(../blocks/confirmation-box/__header/confirmation-box__header.css);
+@import url(../blocks/confirmation-box/__button/confirmation-box__button.css);
 @import url(../blocks/main/main.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__button-add/profile__button-add.css);
@@ -35,12 +38,16 @@
 @import url(../blocks/author/__job/author__job.css);
 @import url(../blocks/author/__fullname/author__fullname.css);
 @import url(../blocks/author/__avatar/author__avatar.css);
+@import url(../blocks/author/__avatar-image/author__avatar-image.css);
+@import url(../blocks/author/__avatar-layer/author__avatar-layer.css);
 @import url(../blocks/author/__button-edit/author__button-edit.css);
 @import url(../blocks/places/places.css);
 @import url(../blocks/places/__list/places__list.css);
 @import url(../blocks/place/place.css);
 @import url(../blocks/place/__photo/place__photo.css);
 @import url(../blocks/place/__title/place__title.css);
+@import url(../blocks/place/__like-container/place__like-container.css);
+@import url(../blocks/place/__like-count/place__like-count.css);
 @import url(../blocks/place/__like/place__like.css);
 @import url(../blocks/place/__like/_active/place__like_active.css);
 @import url(../blocks/place/__delete/place__delete.css);

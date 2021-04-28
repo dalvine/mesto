@@ -9,7 +9,8 @@ import { fillFormAuthor, createCard } from '../utils/utils.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import Section from '../components/Section.js'
 import PopupWithForm from '../components/PopupWithForm.js'
-import UserInfo from '../components/UserInfo'
+import UserInfo from '../components/UserInfo.js'
+import Api from '../components/Api.js'
 import './index.css'
 
 export const userInfo = new UserInfo({
@@ -64,6 +65,14 @@ const popupAddPlace = new PopupWithForm(
   },
   '.popup_content_add-place'
 )
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-23',
+  headers: {
+    authorization: 'ee54480d-8407-451a-93a4-4101fced51f5',
+    'Content-Type': 'application/json'
+  }
+});
 
 fillFormAuthor()
 formAuthorFormValidation.enableValidation()
