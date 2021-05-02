@@ -46,22 +46,9 @@ const cardList = new Section({
 }
 );
 
-  // api.getInitialCards()
-  //   .then((result) => {
-  //     cardList.renderItems(result)
-  //   })
-  //   .catch((err) => getMessage(err))
-
-  // api.getUserInfo()
-  //   .then(result => {
-  //     userInfo.saveUserInfo(result)
-  //     userInfo.setUserInfo(result)
-  //   })
-  //   .catch(err => getMessage(err))
-
   (function() {
-    main.classList.add('main_loading')
-    isLoadingPageFigure.classList.add('main__load_visible')
+    main.classList.add('main_hidden')
+    isLoadingPageFigure.classList.add('loading-page_visible')
     Promise.all([api.getInitialCards(), api.getUserInfo()])
       .then(value => {
         const [initialCards, userData] = value
@@ -71,8 +58,8 @@ const cardList = new Section({
       })
       .catch(err => console.log(err))
       .finally(() => {
-        main.classList.remove('main_loading')
-        isLoadingPageFigure.classList.remove('main__load_visible')
+        main.classList.remove('main_hidden')
+        isLoadingPageFigure.classList.remove('loading-page_visible')
       })
   })();
 

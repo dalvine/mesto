@@ -2,9 +2,9 @@
 @import url(../vendor/fonts/fonts.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/main/main.css);
-@import url(../blocks/main/_loading/main_loading.css);
-@import url(../blocks/main/__load/main__load.css);
-@import url(../blocks/main/__load/_visible/main__load_visible.css);
+@import url(../blocks/main/_hidden/main_hidden.css);
+@import url(../blocks/loading-page/loading-page.css);
+@import url(../blocks/loading-page/_visible/loading-page_visible.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/popup/popup.css);

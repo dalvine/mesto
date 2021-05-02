@@ -11,7 +11,7 @@ const page = document.querySelector('.page');
 const main = page.querySelector('.main');
 const editProfileButton = page.querySelector('.author__button-edit');
 const formEditAuthor = page.querySelector('.form[name=formAuthor]');
-const isLoadingPageFigure = page.querySelector('.main__load');
+const isLoadingPageFigure = page.querySelector('.loading-page');
 const inputEditNameAuthor = formEditAuthor.querySelector('.form__input[name=author-fullname]');
 const inputEditJobAuthor = formEditAuthor.querySelector('.form__input[name=author-job]');
 const formAddPlace = page.querySelector('.form[name=formAddPlace]');
