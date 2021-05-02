@@ -70,4 +70,12 @@ class FormValidator {
     })
     this._toggleButtonSubmit(inputList)
   }
+
+  checkValidation() {
+    const inputList = Array.from(this._form.querySelectorAll(this._inputSelector))
+    inputList.forEach(inputElement => {
+      this._checkValidInput(inputElement)
+    })
+    this._toggleButtonSubmit(inputList)
+  }
 }

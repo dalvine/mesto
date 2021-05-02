@@ -1,70 +1,33 @@
 import {
   editProfileButton, formEditAuthor, formAddPlace,
-  addPlaceButton, placeTemplate, configForValidation,
-  nameUserSelector, jobUserSelector
+  addPlaceButton, configForValidation,
+  nameUserSelector, jobUserSelector, avatarUserSelector,
+  buttonEditSelector, changeAvatarButton, formChangeAvatar,
+  isLoadingPageFigure, main
 } from '../utils/constants.js'
 import { FormValidator } from '../components/FormValidator.js'
-import { initialCards } from '../utils/initial-сards.js'
-import { fillFormAuthor, createCard } from '../utils/utils.js'
+import { fillFormAuthor, createCard, getMessage } from '../utils/utils.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import Section from '../components/Section.js'
 import PopupWithForm from '../components/PopupWithForm.js'
 import UserInfo from '../components/UserInfo.js'
 import Api from '../components/Api.js'
 import './index.css'
+import PopupWithConfirm from '../components/PopupWithСonfirm.js'
 
-export const userInfo = new UserInfo({
-  nameUserSelector: nameUserSelector,
-  jobUserSelector: jobUserSelector
-})
+export { userInfo, popupWithConfirm, api, popupWithImage }
+
 const addPlaceFormValidation = new FormValidator(configForValidation, formAddPlace)
 const formAuthorFormValidation = new FormValidator(configForValidation, formEditAuthor)
+const formChangeAvatarValidation = new FormValidator(configForValidation, formChangeAvatar)
+
 const popupWithImage = new PopupWithImage('.popup_content_photo');
-
-const cardList = new Section({
-  items: initialCards,
-  renderer: (element) => {
-    const cardElement = createCard({
-      name: element.name,
-      link: element.link,
-    },
-      placeTemplate,
-      () => popupWithImage.open(element)
-    )
-    return cardElement.createCard()
-  }
-},
-  '.places__list'
-)
-
-const popupFormAuthor = new PopupWithForm(
-  (inputValues) => {
-    userInfo.setUserInfo({
-      name: inputValues['author-fullname'],
-      job: inputValues['author-job']
-    })
-  },
-  '.popup_content_form-author'
-)
-
-const popupAddPlace = new PopupWithForm(
-  (inputValues) => {
-    const card = createCard(
-      {
-        name: inputValues['namePlace'],
-        link: inputValues['urlPlace']
-      },
-      placeTemplate,
-      () => {
-        popupWithImage.open({
-          name: inputValues['namePlace'],
-          link: inputValues['urlPlace']
-        })
-      })
-    cardList.addItem(card.createCard())
-  },
-  '.popup_content_add-place'
-)
+const userInfo = new UserInfo({
+  nameUserSelector: nameUserSelector,
+  jobUserSelector: jobUserSelector,
+  avatarUserSelector: avatarUserSelector,
+  buttonEditSelector: buttonEditSelector,
+})
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-23',
@@ -74,23 +37,146 @@ const api = new Api({
   }
 });
 
-fillFormAuthor()
+const cardList = new Section({
+  renderer: (element) => {
+    const cardElement = createCard(element)
+    return cardElement.createCard()
+  },
+  containerSelector: '.places__list'
+}
+);
+
+  // api.getInitialCards()
+  //   .then((result) => {
+  //     cardList.renderItems(result)
+  //   })
+  //   .catch((err) => getMessage(err))
+
+  // api.getUserInfo()
+  //   .then(result => {
+  //     userInfo.saveUserInfo(result)
+  //     userInfo.setUserInfo(result)
+  //   })
+  //   .catch(err => getMessage(err))
+
+  (function() {
+    main.classList.add('main_loading')
+    isLoadingPageFigure.classList.add('main__load_visible')
+    Promise.all([api.getInitialCards(), api.getUserInfo()])
+      .then(value => {
+        const [initialCards, userData] = value
+        userInfo.saveUserInfo(userData)
+        userInfo.setUserInfo(userData)
+        cardList.renderItems(initialCards)
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        main.classList.remove('main_loading')
+        isLoadingPageFigure.classList.remove('main__load_visible')
+      })
+  })();
+
+
+
+const popupFormAuthor = new PopupWithForm(
+  (inputValues) => {
+    popupFormAuthor.renderSaving(true)
+    api.editUserInfo({
+      name: inputValues['author-fullname'],
+      about: inputValues['author-job']
+    })
+      .then(result => {
+        userInfo.setUserInfo(result)
+      })
+      .catch(err => getMessage(err))
+      .finally(() => {
+        popupFormAuthor.renderSaving(false)
+        popupFormAuthor.close()
+      })
+  },
+  '.popup_content_form-author'
+)
+
+
+const popupAddPlace = new PopupWithForm(
+  (inputValues) => {
+    popupAddPlace.renderAdding(true)
+    api.addCard({
+      name: inputValues['namePlace'],
+      link: inputValues['urlPlace']
+    })
+      .then(result => {
+        const card = createCard(result)
+        cardList.addItem(card.createCard())
+      })
+      .catch(err => getMessage(err))
+      .finally(() => {
+        popupAddPlace.renderAdding(false)
+        popupAddPlace.close()
+      })
+  },
+  '.popup_content_add-place'
+)
+
+const popupWithConfirm = new PopupWithConfirm(
+  '.popup_content_confirm-deletion',
+  (id, card) => {
+    popupWithConfirm.renderAdding(true)
+    api.deleteCard(id)
+      .then((res) => {
+        console.log(res.message)
+        card.remove()
+        popupWithConfirm.close()
+      })
+      .catch(err => {
+        getMessage(err)
+        popupWithConfirm.close()
+      })
+      .finally(() => popupWithConfirm.renderAdding(false))
+  }
+)
+
+const popupWithChangeAvatar = new PopupWithForm(
+  (inputValues) => {
+    api.changeAvatar(inputValues['urlAvatar'])
+      .then(result => {
+        userInfo.changeAvatar(result.avatar)
+        popupWithChangeAvatar.close()
+      })
+      .catch(err => getMessage(err))
+  },
+  '.popup_content_change-avatar'
+)
+
+
 formAuthorFormValidation.enableValidation()
 addPlaceFormValidation.enableValidation()
+formChangeAvatarValidation.enableValidation()
+popupWithConfirm.setEventListeners()
+
+
+
 popupWithImage.setEventListeners()
 popupFormAuthor.setEventListeners()
 popupAddPlace.setEventListeners()
+popupWithChangeAvatar.setEventListeners()
+
+
 editProfileButton.addEventListener('click', () => {
   fillFormAuthor()
+  formAuthorFormValidation.checkValidation()
   popupFormAuthor.open()
 })
+
+
 addPlaceButton.addEventListener('click', () => {
+  addPlaceFormValidation.checkValidation()
   popupAddPlace.open()
 })
-cardList.renderItems()
 
-
-
-
+changeAvatarButton.addEventListener('click', () => {
+  formChangeAvatarValidation.checkValidation()
+  popupWithChangeAvatar.open()
+})
 
 

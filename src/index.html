@@ -12,12 +12,15 @@
   <header class="header">
     <a href="https://dalvine.github.io/mesto/index.html" class="header__logo" target="_self"></a>
   </header>
+  <div class="main__load"></div>
   <main class="main">
     <section class="popup popup_content_confirm-deletion">
       <div class="popup__container">
         <div class="confirmation-box">
+          <form class="confirmation-box__form" name="formConfirm">
           <h2 class="confirmation-box__header">Вы уверены?</h2>
-          <button class="confirmation-box__button" type="submit">Да</button>
+            <button class="confirmation-box__button" type="submit">Да</button>
+          </form>
         </div>
         <button type="button" class="popup__close popup__close_content_confirm-deletion"></button>
       </div>
@@ -74,11 +77,11 @@
     <section class="profile">
       <div class="author">
         <div class="author__avatar">
-          <img src="<%=require('./images/author-avatar.jpg')%>" alt="Аватарка автора" class="author__avatar-image">
+          <img src="" alt="Аватарка автора" class="author__avatar-image">
           <div class="author__avatar-layer"></div>
         </div>
-        <h1 class="author__fullname">Жак-Ив Кусто</h1>
-        <p class="author__job">Исследователь океана</p>
+        <h1 class="author__fullname"></h1>
+        <p class="author__job"></p>
         <button type="button" class="author__button-edit"></button>
       </div>
       <button type="button" class="profile__button-add"></button>
