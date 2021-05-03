@@ -11,7 +11,7 @@
 
 @media screen and (max-width: 920px) {
   .places__list {
-    width: 90%;
+    max-width: 90%;
   }
 }
 
