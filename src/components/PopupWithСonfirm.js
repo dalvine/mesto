@@ -25,7 +25,7 @@ export default class PopupWithConfirm extends Popup {
     this._buttonSubmit.focus()
   }
 
-  renderAdding(isLoading) {
+  renderWaiting(isLoading) {
     if(isLoading) {
       this._buttonSubmit.textContent = 'Удаляем...'
     } else {

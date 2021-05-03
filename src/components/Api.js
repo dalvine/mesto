@@ -10,9 +10,7 @@ export default class Api {
       "method": "GET",
       "headers": this._headers
     })
-      .then(res => {
-        return this._responseProcessing(res)
-      })
+      .then(this._responseProcessing)
   }
 
   getUserInfo() {
@@ -20,9 +18,7 @@ export default class Api {
       "method": "GET",
       "headers": this._headers
     })
-      .then(res => {
-        return this._responseProcessing(res)
-      })
+      .then(this._responseProcessing)
   }
   // другие методы работы с API
 
@@ -35,9 +31,7 @@ export default class Api {
         "about": data.about,
       })
     })
-    .then(res => {
-      return this._responseProcessing(res)
-    })
+      .then(this._responseProcessing)
   }
 
   addCard(data) {
@@ -49,52 +43,42 @@ export default class Api {
         "link": data.link,
       })
     })
-    .then(res => {
-      return this._responseProcessing(res)
-    })
+      .then(this._responseProcessing)
   }
 
   changeAvatar(link) {
     return fetch(`${this._url}/users/me/avatar`, {
-      "method" : "PATCH",
+      "method": "PATCH",
       "headers": this._headers,
       "body": JSON.stringify({
         "avatar": link,
       })
     })
-    .then(res => {
-      return this._responseProcessing(res)
-    })
+      .then(this._responseProcessing)
   }
 
   deleteCard(id) {
     return fetch(`${this._url}/cards/${id}`, {
-      "method" : "DELETE",
-      "headers" : this._headers,
+      "method": "DELETE",
+      "headers": this._headers,
     })
-    .then(res => {
-      return this._responseProcessing(res)
-    })
+      .then(this._responseProcessing)
   }
 
   addLike(id) {
     return fetch(`${this._url}/cards/likes/${id}`, {
-      "method" : "PUT",
-      "headers" : this._headers,
+      "method": "PUT",
+      "headers": this._headers,
     })
-    .then(res => {
-      return this._responseProcessing(res)
-    })
+      .then(this._responseProcessing)
   }
 
   removeLike(id) {
     return fetch(`${this._url}/cards/likes/${id}`, {
-      "method" : "DELETE",
-      "headers" : this._headers,
+      "method": "DELETE",
+      "headers": this._headers,
     })
-    .then(res => {
-      return this._responseProcessing(res)
-    })
+      .then(this._responseProcessing)
   }
 
 

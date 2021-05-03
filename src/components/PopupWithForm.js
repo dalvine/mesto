@@ -1,12 +1,14 @@
 import Popup from './Popup.js'
 
 export default class PopupWithForm extends Popup {
-  constructor(submitCallBack, popupSelector) {
+  constructor(submitCallBack, popupSelector, textWaiting) {
     super(popupSelector)
     this._submit = submitCallBack
     this._form = this._popup.querySelector('.form')
     this._inputList = this._form.querySelectorAll('.form__input')
     this._buttonSubmit = this._form.querySelector('.form__button')
+    this._buttonSumbitTextContent = this._buttonSubmit.textContent
+    this._buttonSubmitTextWaiting = textWaiting
   }
 
   _getInputValues() {
@@ -30,22 +32,12 @@ export default class PopupWithForm extends Popup {
     super.close()
   }
 
-  renderSaving(isLoading) {
+  renderWaiting(isLoading) {
     if (isLoading) {
-      this._buttonSubmit.textContent = 'Сохранение...'
+      this._buttonSubmit.textContent = this._buttonSubmitTextWaiting
     } else {
       setTimeout(() => {
-        this._buttonSubmit.textContent = 'Сохранить'
-      }, 300)
-    }
-  }
-
-  renderAdding(isLoading) {
-    if (isLoading) {
-      this._buttonSubmit.textContent = 'Создаем...'
-    } else {
-      setTimeout(() => {
-        this._buttonSubmit.textContent = 'Создать'
+        this._buttonSubmit.textContent = this._buttonSumbitTextContent
       }, 300)
     }
   }

@@ -54,7 +54,7 @@ const cardList = new Section({
         const [initialCards, userData] = value
         userInfo.saveUserInfo(userData)
         userInfo.setUserInfo(userData)
-        cardList.renderItems(initialCards)
+        cardList.renderItems(initialCards.reverse())
       })
       .catch(err => console.log(err))
       .finally(() => {
@@ -67,27 +67,28 @@ const cardList = new Section({
 
 const popupFormAuthor = new PopupWithForm(
   (inputValues) => {
-    popupFormAuthor.renderSaving(true)
+    popupFormAuthor.renderWaiting(true)
     api.editUserInfo({
       name: inputValues['author-fullname'],
       about: inputValues['author-job']
     })
       .then(result => {
         userInfo.setUserInfo(result)
+        popupFormAuthor.close()
       })
       .catch(err => getMessage(err))
       .finally(() => {
-        popupFormAuthor.renderSaving(false)
-        popupFormAuthor.close()
+        popupFormAuthor.renderWaiting(false)
       })
   },
-  '.popup_content_form-author'
+  '.popup_content_form-author',  // popupSelector
+  'Сохранение...' //textWaiting
 )
 
 
 const popupAddPlace = new PopupWithForm(
   (inputValues) => {
-    popupAddPlace.renderAdding(true)
+    popupAddPlace.renderWaiting(true)
     api.addCard({
       name: inputValues['namePlace'],
       link: inputValues['urlPlace']
@@ -95,20 +96,21 @@ const popupAddPlace = new PopupWithForm(
       .then(result => {
         const card = createCard(result)
         cardList.addItem(card.createCard())
+        popupAddPlace.close()
       })
       .catch(err => getMessage(err))
       .finally(() => {
-        popupAddPlace.renderAdding(false)
-        popupAddPlace.close()
+        popupAddPlace.renderWaiting(false)
       })
   },
-  '.popup_content_add-place'
+  '.popup_content_add-place', //popupSelector
+  'Добавляем...' //textWaiting
 )
 
 const popupWithConfirm = new PopupWithConfirm(
   '.popup_content_confirm-deletion',
   (id, card) => {
-    popupWithConfirm.renderAdding(true)
+    popupWithConfirm.renderWaiting(true)
     api.deleteCard(id)
       .then((res) => {
         console.log(res.message)
@@ -117,24 +119,25 @@ const popupWithConfirm = new PopupWithConfirm(
       })
       .catch(err => {
         getMessage(err)
-        popupWithConfirm.close()
       })
-      .finally(() => popupWithConfirm.renderAdding(false))
+      .finally(() => popupWithConfirm.renderWaiting(false))
   }
 )
 
 const popupWithChangeAvatar = new PopupWithForm(
   (inputValues) => {
+    popupWithChangeAvatar.renderWaiting(true)
     api.changeAvatar(inputValues['urlAvatar'])
       .then(result => {
         userInfo.changeAvatar(result.avatar)
         popupWithChangeAvatar.close()
       })
       .catch(err => getMessage(err))
+      .finally(() => popupWithChangeAvatar.renderWaiting(false))
   },
-  '.popup_content_change-avatar'
+  '.popup_content_change-avatar',  // popupSelector
+  'Сохраняем...' //textWaiting
 )
-
 
 formAuthorFormValidation.enableValidation()
 addPlaceFormValidation.enableValidation()
